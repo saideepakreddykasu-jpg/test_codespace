@@ -1,0 +1,30 @@
+Python 3.13.17 (tags/v3.13.17:64e080d, Oct 21 2026, 14:08:53) [MSC v.1944 64 bit (AMD64)] on win32
+Enter "help" below or click "Help" above for more information.
+basic = 30000
+... allowances = 8000
+... overtime_hours = 10
+... overtime_rate = 200
+... incentive = 3000
+... 
+... gross = basic + allowances + overtime_hours * overtime_rate + incentive
+... 
+... # Progressive deduction
+... remaining = gross
+... deduction = 0
+... 
+... for limit, rate in [(25000, 0.05), (25000, 0.10), (float("inf"), 0.15)]:
+...     taxable = min(remaining, limit)
+...     deduction += taxable * rate
+...     remaining -= taxable
+...     if remaining <= 0:
+...         break
+... 
+... net = gross - deduction
+... 
+... print("SALARY STATEMENT")
+... print(f"Basic pay: Rs.{basic:.2f}")
+... print(f"Allowances: Rs.{allowances:.2f}")
+... print(f"Overtime: Rs.{overtime_hours * overtime_rate:.2f}")
+... print(f"Incentive: Rs.{incentive:.2f}")
+... print(f"Gross salary: Rs.{gross:.2f}")
+... print(f"Deduction: Rs.{deduction:.2f}")
